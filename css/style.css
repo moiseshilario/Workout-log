@@ -2,8 +2,8 @@ h3, label {
      font-family: sans-serif;
 }
 
-.dashboard {
-    text-align: center;
+hr {
+    width: 50%;
 }
 
 table {
@@ -11,10 +11,12 @@ table {
     border-collapse: collapse;
     width: 50%;
     margin: auto;
-    margin-top: 20px;
-    
+    margin-top: 20px;  
 }
 
+.dashboard {
+    text-align: center;
+}
 
 td, th {
     border: 1px solid #dddddd;
@@ -23,6 +25,12 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #dcdcdc;
+}
+
+@media only screen and (max-width: 900px){
+    hr, table{
+        width: 75%;
+    }
 }
 

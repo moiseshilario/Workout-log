@@ -16,7 +16,7 @@
             <form id="frm">
                 <label for="">Time spent: </label>
                 <input type="number" name="time" value="" placeholder="Time spent">
-                
+
                 <label for="">Activity:</label>
                 <select name="activity">
                     <option value="Bike">Bike</option>
@@ -28,22 +28,23 @@
                 <input type="date" name="datepicker" value="">
             </form>
 
-            <button name="add" onclick="addActivity()">Add</button>
+            <button name="add" onclick="addActivity()" class="btn-add">Add</button>
         </div>
 
-
-
-
-        <div class="table" >
+        <hr>
+        <div class="table">
             <table id="workoutTable">
                 <tr>
                     <th>Time</th>
                     <th>Activity</th>
                     <th>Date</th>
+                    <th></th>
                 </tr>
 
             </table>
         </div>
+
+        <h3 id="sum"></h3>
 
 
     </div>
