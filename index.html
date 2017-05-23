@@ -13,23 +13,29 @@
         <h3>Workout log</h3>
 
         <div class="inputs">
-            <label for="">Time spent: </label>
-            <input type="number" name="time" value="" placeholder="Time spent">
-            <label for="">Activity:</label>
-            <select>
-                <option value="bike">Bike</option>
-                <option value="bike">Run</option>
-                <option value="bike">Swimming</option>
-            </select>
+            <form id="frm">
+                <label for="">Time spent: </label>
+                <input type="number" name="time" value="" placeholder="Time spent">
+                
+                <label for="">Activity:</label>
+                <select name="activity">
+                    <option value="Bike">Bike</option>
+                    <option value="Run">Run</option>
+                    <option value="Swimming">Swimming</option>
+                 </select>
 
-            <label for="">Date:</label>
-            <input type="date" name="datepicker" value="">
+                <label for="">Date:</label>
+                <input type="date" name="datepicker" value="">
+            </form>
 
-            <input type="button" name="add" value="Add" onclick="addActivity()">
+            <button name="add" onclick="addActivity()">Add</button>
         </div>
-        
-        <div class="table">
-            <table>
+
+
+
+
+        <div class="table" >
+            <table id="workoutTable">
                 <tr>
                     <th>Time</th>
                     <th>Activity</th>
@@ -42,5 +48,8 @@
 
     </div>
 </body>
+
+<script src="js/workout.js"></script>
+<script src="js/app.js"></script>
 
 </html>

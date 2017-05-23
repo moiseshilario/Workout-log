@@ -2,19 +2,27 @@ h3, label {
      font-family: sans-serif;
 }
 
+.dashboard {
+    text-align: center;
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 50%;
+    margin: auto;
     margin-top: 20px;
+    
 }
+
 
 td, th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
