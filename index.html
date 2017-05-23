@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="dashboard">
+        <h3>Workout log</h3>
+
+        <div class="inputs">
+            <label for="">Time spent: </label>
+            <input type="number" name="time" value="" placeholder="Time spent">
+            <label for="">Activity:</label>
+            <select>
+                <option value="bike">Bike</option>
+                <option value="bike">Run</option>
+                <option value="bike">Swimming</option>
+            </select>
+
+            <label for="">Date:</label>
+            <input type="date" name="datepicker" value="">
+
+            <input type="button" name="add" value="Add" onclick="addActivity()">
+        </div>
+        
+        <div class="table">
+            <table>
+                <tr>
+                    <th>Time</th>
+                    <th>Activity</th>
+                    <th>Date</th>
+                </tr>
+
+            </table>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
