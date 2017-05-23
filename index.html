@@ -15,7 +15,7 @@
         <div class="inputs">
             <form id="frm">
                 <label for="">Time spent: </label>
-                <input type="number" name="time" value="" placeholder="Time spent">
+                <input type="number" name="time" value="" placeholder="Time spent" min="1" required>
 
                 <label for="">Activity:</label>
                 <select name="activity">
@@ -26,9 +26,10 @@
 
                 <label for="">Date:</label>
                 <input type="date" name="datepicker" value="">
+            
             </form>
+                <button name="add" onclick="app.addActivity()" class="btn-add">Add</button>
 
-            <button name="add" onclick="addActivity()" class="btn-add">Add</button>
         </div>
 
         <hr>
