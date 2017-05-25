@@ -14,21 +14,22 @@
 
         <div class="inputs">
             <form id="frm">
-                <label for="">Time spent: </label>
-                <input type="number" name="time" value="" placeholder="Time spent" min="1" required>
+                <label for="time">Time spent: </label>
+                <input type="number" name="time" value="" placeholder="Time spent" min="1" id="time" required>
 
-                <label for="">Activity:</label>
+                <label for="activity">Activity:</label>
                 <select name="activity">
                     <option value="Bike">Bike</option>
                     <option value="Run">Run</option>
                     <option value="Swimming">Swimming</option>
                  </select>
 
-                <label for="">Date:</label>
-                <input type="date" name="datepicker" value="">
-            
+                <label for="datepicker">Date:</label>
+                <input type="date" name="datepicker" value="" id="datepicker" required>
+
+                <button name="addBtn" class="btn-add" id="addBtn">Add</button>
             </form>
-                <button name="add" onclick="app.addActivity()" class="btn-add">Add</button>
+
 
         </div>
 

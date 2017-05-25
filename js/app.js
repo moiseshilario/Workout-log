@@ -1,22 +1,27 @@
-let app = function () {
-
-    let workouts = [];
+(() => {
+    const workouts = [];
+    const addBtn = document.getElementById("addBtn");
     let sum = 0;
 
-    function addActivity(){
+    addBtn.addEventListener("click", addActivity);
+
+    function addActivity(event) {
+        event.preventDefault();
+
+        const form = document.getElementById("frm");
+        const inputs = [];
+        console.log('form: ' + form.elements);
         const FORM_SIZE = 3;
-        let form = document.getElementById("frm");
-        let inputs = [];
+
 
         for (let index = 0; index < FORM_SIZE; index++) {
-            inputs.push(form.elements[index].value);
+            inputs.push(form[index].value);
         }
 
-        let workout = new Workout(...inputs);
+        const workout = new Workout(...inputs);
         addWorkoutInTable(workout);
         sumHours(parseInt(workout.time));
         workouts.push(workout);
-        workout.showWorkout();
     }
 
     function addWorkoutInTable(workout) {
@@ -24,6 +29,8 @@ let app = function () {
         let row = table.insertRow(1);
         let cell = [];
         let btnDelete = document.createElement("button");
+        btnDelete.addEventListener("click", deleteWorkout);
+        btnDelete.timeToDelete = workout.time;
         let t = document.createTextNode("-");
         btnDelete.appendChild(t);
 
@@ -37,10 +44,22 @@ let app = function () {
         cell[3].appendChild(btnDelete);
     }
 
+    function deleteWorkout(event) {
+        console.log(event);
+        let i = event.target.closest("tr").rowIndex;
+        document.getElementById("workoutTable").deleteRow(i);
+        subtractHours(event.target.timeToDelete);
+
+    }
+
     function sumHours(hours) {
         sum += hours;
         document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
     }
 
-    return { addActivity: addActivity, addWorkoutInTable: addWorkoutInTable, sumHours: sumHours };
-}();
+    function subtractHours(hours) {
+        sum -= hours;
+        document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
+    }
+})();
+
