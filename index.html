@@ -13,18 +13,18 @@
         <h3>Workout log</h3>
 
         <div class="inputs">
-            <form id="frm">
+            <form id="frm" method="post">
                 <label for="time">Time spent: </label>
                 <input type="number" name="time" value="" placeholder="Time spent" min="1" id="time" required>
 
-                <label for="activity">Activity:</label>
+                <label for="activity" class="label-activity">Activity:</label>
                 <select name="activity">
                     <option value="Bike">Bike</option>
                     <option value="Run">Run</option>
                     <option value="Swimming">Swimming</option>
                  </select>
 
-                <label for="datepicker">Date:</label>
+                <label for="datepicker" class="label-date">Date:</label>
                 <input type="date" name="datepicker" value="" id="datepicker" required>
 
                 <button name="addBtn" class="btn-add" id="addBtn">Add</button>

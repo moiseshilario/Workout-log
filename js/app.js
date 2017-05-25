@@ -10,7 +10,6 @@
 
         const form = document.getElementById("frm");
         const inputs = [];
-        console.log('form: ' + form.elements);
         const FORM_SIZE = 3;
 
 
@@ -25,12 +24,13 @@
     }
 
     function addWorkoutInTable(workout) {
-        let table = document.getElementById("workoutTable");
+        const table = document.getElementById("workoutTable");
         let row = table.insertRow(1);
         let cell = [];
         let btnDelete = document.createElement("button");
         btnDelete.addEventListener("click", deleteWorkout);
         btnDelete.timeToDelete = workout.time;
+        btnDelete.className = "btn-delete";
         let t = document.createTextNode("-");
         btnDelete.appendChild(t);
 
