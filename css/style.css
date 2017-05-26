@@ -1,5 +1,5 @@
-h3, label {
-     font-family: sans-serif;
+body, button {
+    font-family: 'Jura', sans-serif;
 }
 
 hr {
@@ -7,7 +7,7 @@ hr {
 }
 
 table {
-    font-family: arial, sans-serif;
+    
     border-collapse: collapse;
     border: 1px solid #dddddd;
     margin: auto;
@@ -21,6 +21,17 @@ td, th {
     padding: 8px;
 }
 
+tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.box-title {
+    position: absolute;
+    top: 35px;  
+    
+    background-color: white;
+}
+
 .dashboard {
     width: 50%;
     margin: auto;
@@ -28,12 +39,16 @@ td, th {
    
 }
 
+.inputs {
+    border: 1px solid #a9a9a9;
+    height: 50px;
+    padding-top: 25px;
+    border-radius: 5px;
 
-tr:nth-child(even) {
-    background-color: #f5f5f5;
 }
 
 .btn-add {
+    margin-left: 15px;
     background-color: white;
     border-radius: 5px;
     border: 0.5px solid silver;
@@ -58,17 +73,23 @@ tr:nth-child(even) {
 }
 
 .label-activity, .label-date {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
-@media only screen and (max-width: 900px){
-    
-    .dashboard {
-        width: 100%;
-    }
+.time-input{
+    width: 30px;
+}
 
-    hr, table{
+@media only screen and (max-width: 1100px) and (min-width: 750px){
+
+    .dashboard, hr, table{
         width: 75%;
     }
 }
 
+@media only screen and (max-width: 749px){
+    
+    .dashboard, hr, table{
+        width: 90%;
+    }
+}

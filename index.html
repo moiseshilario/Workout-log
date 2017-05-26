@@ -5,26 +5,28 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Concert+One|Jura" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="dashboard">
-        <h3>Workout log</h3>
+        <h2>Workout log</h2>
 
+        <p class="box-title">Insert an item</p>
         <div class="inputs">
             <form id="frm" method="post">
-                <label for="time">Time spent: </label>
-                <input type="number" name="time" value="" placeholder="Time spent" min="1" id="time" required>
+                <label for="time">Time spent </label>
+                <input type="number" name="time" value="0" min="1" id="time" class="time-input" required>
 
-                <label for="activity" class="label-activity">Activity:</label>
+                <label for="activity" class="label-activity">Activity</label>
                 <select name="activity">
                     <option value="Bike">Bike</option>
                     <option value="Run">Run</option>
                     <option value="Swimming">Swimming</option>
                  </select>
 
-                <label for="datepicker" class="label-date">Date:</label>
+                <label for="datepicker" class="label-date">Date</label>
                 <input type="date" name="datepicker" value="" id="datepicker" required>
 
                 <button name="addBtn" class="btn-add" id="addBtn">Add</button>
