@@ -45,7 +45,7 @@
     }
 
     function deleteWorkout(event) {
-        console.log(event);
+        
         let i = event.target.closest("tr").rowIndex;
         document.getElementById("workoutTable").deleteRow(i);
         subtractHours(event.target.timeToDelete);
