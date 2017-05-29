@@ -6,21 +6,19 @@
     addBtn.addEventListener("click", addActivity);
 
     function addActivity(event) {
-        event.preventDefault();
+        const time = document.getElementById("time");
+        const date = document.getElementById("datepicker");
+        const select = document.getElementById("activity");
+        const activity = select.options[select.selectedIndex].text;
 
-        const form = document.getElementById("frm");
-        const inputs = [];
-        const FORM_SIZE = 3;
+        if (time.checkValidity() && date.checkValidity()) {
+            event.preventDefault();
 
-
-        for (let index = 0; index < FORM_SIZE; index++) {
-            inputs.push(form[index].value);
+            const workout = new Workout(time.value, activity, date.value);
+            addWorkoutInTable(workout);
+            sumHours(parseInt(workout.time));
+            workouts.push(workout);
         }
-
-        const workout = new Workout(...inputs);
-        addWorkoutInTable(workout);
-        sumHours(parseInt(workout.time));
-        workouts.push(workout);
     }
 
     function addWorkoutInTable(workout) {
@@ -45,11 +43,9 @@
     }
 
     function deleteWorkout(event) {
-        
         let i = event.target.closest("tr").rowIndex;
         document.getElementById("workoutTable").deleteRow(i);
         subtractHours(event.target.timeToDelete);
-
     }
 
     function sumHours(hours) {
