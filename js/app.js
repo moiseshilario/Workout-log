@@ -23,14 +23,13 @@
 
     function addWorkoutInTable(workout) {
         const table = document.getElementById("workoutTable");
-        let row = table.insertRow(1);
-        let cell = [];
-        let btnDelete = document.createElement("button");
+        const row = table.insertRow(1);
+        const cell = [];
+        const btnDelete = document.createElement("button");
         btnDelete.addEventListener("click", deleteWorkout);
         btnDelete.timeToDelete = workout.time;
         btnDelete.className = "btn-delete";
-        let t = document.createTextNode("-");
-        btnDelete.appendChild(t);
+        btnDelete.appendChild(document.createTextNode("-"));
 
         for (let i = 0; i < 4; i++) {
             cell.push(row.insertCell(i));
@@ -43,7 +42,7 @@
     }
 
     function deleteWorkout(event) {
-        let i = event.target.closest("tr").rowIndex;
+        const i = event.target.closest("tr").rowIndex;
         document.getElementById("workoutTable").deleteRow(i);
         subtractHours(event.target.timeToDelete);
     }
@@ -56,6 +55,6 @@
     function subtractHours(hours) {
         sum -= hours;
         document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
-    }
+    }   
 })();
 
