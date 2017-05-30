@@ -28,13 +28,19 @@
     }
 
     function toggleArrows(event) {
-        let th = event.currentTarget.cellIndex;
-        if (document.getElementsByClassName("arrow-up")[th].style.visibility != 'hidden') {
-            document.getElementsByClassName("arrow-up")[th].style.visibility = 'hidden';
-            document.getElementsByClassName("arrow-down")[th].style.visibility = '';
+        let selectedTh = event.currentTarget.cellIndex;
+        for (var th = 0; th < 3; th++) {
+            if (th != selectedTh) {
+                document.getElementsByClassName("arrow-up")[th].style.visibility = '';
+                document.getElementsByClassName("arrow-down")[th].style.visibility = '';
+            }
+        }
+        if (document.getElementsByClassName("arrow-up")[selectedTh].style.visibility != 'hidden') {
+            document.getElementsByClassName("arrow-up")[selectedTh].style.visibility = 'hidden';
+            document.getElementsByClassName("arrow-down")[selectedTh].style.visibility = '';
         } else {
-            document.getElementsByClassName("arrow-up")[th].style.visibility = '';
-            document.getElementsByClassName("arrow-down")[th].style.visibility = 'hidden';
+            document.getElementsByClassName("arrow-up")[selectedTh].style.visibility = '';
+            document.getElementsByClassName("arrow-down")[selectedTh].style.visibility = 'hidden';
         }
     }
 
@@ -72,6 +78,6 @@
     function subtractHours(hours) {
         sum -= hours;
         document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
-    }    
+    }
 })();
 
