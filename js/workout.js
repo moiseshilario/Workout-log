@@ -4,10 +4,4 @@ class Workout {
         this.activity = activity;
         this.date = date;
     }
-
-    showWorkout() {
-        console.log(`Time spent ${this.time}
-Activity name: ${this.activity}
-Date: ${this.date}`);
-    }
 }
