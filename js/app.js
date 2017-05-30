@@ -1,9 +1,15 @@
 (() => {
     const workouts = [];
     const addBtn = document.getElementById("addBtn");
+    const thTime = document.getElementById("th-time");
+    const thActivity = document.getElementById("th-activity");
+    const thDate = document.getElementById("th-date");
     let sum = 0;
 
     addBtn.addEventListener("click", addActivity);
+    thTime.addEventListener("click", toggleArrows);
+    thActivity.addEventListener("click", toggleArrows);
+    thDate.addEventListener("click", toggleArrows);
 
     function addActivity(event) {
         const time = document.getElementById("time");
@@ -18,6 +24,17 @@
             addWorkoutInTable(workout);
             sumHours(parseInt(workout.time));
             workouts.push(workout);
+        }
+    }
+
+    function toggleArrows(event) {
+        let th = event.currentTarget.cellIndex;
+        if (document.getElementsByClassName("arrow-up")[th].style.visibility != 'hidden') {
+            document.getElementsByClassName("arrow-up")[th].style.visibility = 'hidden';
+            document.getElementsByClassName("arrow-down")[th].style.visibility = '';
+        } else {
+            document.getElementsByClassName("arrow-up")[th].style.visibility = '';
+            document.getElementsByClassName("arrow-down")[th].style.visibility = 'hidden';
         }
     }
 
@@ -55,6 +72,6 @@
     function subtractHours(hours) {
         sum -= hours;
         document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
-    }   
+    }    
 })();
 
