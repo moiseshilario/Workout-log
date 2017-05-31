@@ -1,5 +1,4 @@
 (() => {
-    const workouts = [];
     const addBtn = document.getElementById("add-btn");
     const tableHeaders = document.getElementsByClassName("table-headers");
     let sum = 0;
@@ -15,12 +14,9 @@
         
         if (time.checkValidity() && date.checkValidity()) {
             event.preventDefault();
-
             const workout = new Workout(time.value, date.value, activity.value);
-            
             addWorkoutInTable(workout);
             sumHours(parseInt(workout.time));
-            workouts.push(workout);
         }
     }
 
@@ -42,8 +38,7 @@
     }
 
     function addWorkoutInTable(workout) {
-        const table = document.getElementById("workout-table");
-        const row = table.insertRow(1);
+        const row = document.getElementById("workout-table").insertRow(1);
         const cell = [];
         const btnDelete = document.createElement("button");
         btnDelete.addEventListener("click", deleteWorkout);
@@ -62,8 +57,7 @@
     }
 
     function deleteWorkout(event) {
-        const i = event.target.closest("tr").rowIndex;
-        document.getElementById("workout-table").deleteRow(i);
+        document.getElementById("workout-table").deleteRow(event.target.closest("tr").rowIndex);
         subtractHours(event.target.timeToDelete);
     }
 
