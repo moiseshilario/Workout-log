@@ -4,8 +4,8 @@
     const tableHeaders = document.getElementsByClassName("table-headers");
     let sum = 0;
     
-    for (var index = 0; index < tableHeaders.length; index++) {
-        tableHeaders[index].addEventListener("click",toggleArrows);
+    for (let th of tableHeaders) {
+        th.addEventListener("click",toggleArrows);
     }
    
     addBtn.addEventListener("click", addActivity);
