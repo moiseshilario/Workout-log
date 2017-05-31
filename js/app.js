@@ -6,8 +6,8 @@
     
     for (let th of tableHeaders) {
         th.addEventListener("click",toggleArrows);
+        th.addEventListener("click", sortTable);
     }
-   
     addBtn.addEventListener("click", addActivity);
     
     function addActivity(event) {
@@ -76,5 +76,48 @@
         sum -= hours;
         document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
     }
-})();
 
+    function sortTable(event) {
+        let selectedColumn = event.currentTarget.cellIndex;
+        let table, rows, i, switching, currentRow, nextRow, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("workoutTable");
+        switching = true;
+        dir = "asc";
+
+        while (switching) {
+
+            switching = false;
+            rows = table.getElementsByTagName("TR");
+
+            for (i = 1, length = rows.length  ; i < (length - 1); i++) {
+                shouldSwitch = false;
+
+                currentRow = rows[i].getElementsByTagName("TD")[selectedColumn];
+                nextRow = rows[i + 1].getElementsByTagName("TD")[selectedColumn];
+
+                if (dir == "asc") {
+                    if (currentRow.innerHTML.toLowerCase() > nextRow.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (currentRow.innerHTML.toLowerCase() < nextRow.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount++;
+            } else {
+                if (switchcount === 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+
+})();

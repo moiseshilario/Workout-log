@@ -17,17 +17,17 @@
         <div class="inputs">
             <form id="frm" method="post">
                 <label for="time">Time spent </label>
-                <input type="number" name="time" value="0" min="1" id="time" class="time-input" required>
+                <input type="number" name="time" value="0" min="1" id="time" class="time-input data" required>
 
                 <label for="activity" class="label-activity">Activity</label>
-                <select name="activity" id="activity">
+                <select name="activity" id="activity" class="data">
                     <option value="Bike">Bike</option>
                     <option value="Run">Run</option>
                     <option value="Swimming">Swimming</option>
                  </select>
 
                 <label for="datepicker" class="label-date">Date</label>
-                <input type="date" name="datepicker" id="datepicker" required>
+                <input type="date" name="datepicker" id="datepicker" class="data" required>
                 
                 <button name="addBtn" class="btn-add" id="addBtn">Add</button>
             </form>
@@ -39,9 +39,9 @@
         <div class="table">
             <table id="workoutTable">
                 <tr>
-                    <th id="th-time">Time <span class="arrow-up"></span> <span class="arrow-down"></span></th>
-                    <th id="th-activity">Activity <span class="arrow-up"></span> <span class="arrow-down"></span></th>
-                    <th id="th-date">Date<span class="arrow-up"></span> <span class="arrow-down"></span></th>
+                    <th class="table-headers">Time <span class="arrow-up"></span> <span class="arrow-down"></span></th>
+                    <th class="table-headers">Activity <span class="arrow-up"></span> <span class="arrow-down"></span></th>
+                    <th class="table-headers">Date<span class="arrow-up"></span> <span class="arrow-down"></span></th>
                     <th></th>
                 </tr>
 
