@@ -1,26 +1,23 @@
 (() => {
     const workouts = [];
     const addBtn = document.getElementById("addBtn");
-    const thTime = document.getElementById("th-time");
-    const thActivity = document.getElementById("th-activity");
-    const thDate = document.getElementById("th-date");
+    const tableHeaders = document.getElementsByClassName("table-headers");
     let sum = 0;
-
+    
+    for (var index = 0; index < tableHeaders.length; index++) {
+        tableHeaders[index].addEventListener("click",toggleArrows);
+    }
+   
     addBtn.addEventListener("click", addActivity);
-    thTime.addEventListener("click", toggleArrows);
-    thActivity.addEventListener("click", toggleArrows);
-    thDate.addEventListener("click", toggleArrows);
-
+    
     function addActivity(event) {
-        const time = document.getElementById("time");
-        const date = document.getElementById("datepicker");
-        const select = document.getElementById("activity");
-        const activity = select.options[select.selectedIndex].text;
-
+        const [time, date, activity] = document.getElementsByClassName("data");
+        
         if (time.checkValidity() && date.checkValidity()) {
             event.preventDefault();
 
-            const workout = new Workout(time.value, activity, date.value);
+            const workout = new Workout(time.value, date.value, activity.value);
+            
             addWorkoutInTable(workout);
             sumHours(parseInt(workout.time));
             workouts.push(workout);
