@@ -1,6 +1,6 @@
 (() => {
     const workouts = [];
-    const addBtn = document.getElementById("addBtn");
+    const addBtn = document.getElementById("add-btn");
     const tableHeaders = document.getElementsByClassName("table-headers");
     let sum = 0;
     
@@ -42,7 +42,7 @@
     }
 
     function addWorkoutInTable(workout) {
-        const table = document.getElementById("workoutTable");
+        const table = document.getElementById("workout-table");
         const row = table.insertRow(1);
         const cell = [];
         const btnDelete = document.createElement("button");
@@ -63,7 +63,7 @@
 
     function deleteWorkout(event) {
         const i = event.target.closest("tr").rowIndex;
-        document.getElementById("workoutTable").deleteRow(i);
+        document.getElementById("workout-table").deleteRow(i);
         subtractHours(event.target.timeToDelete);
     }
 
@@ -80,7 +80,7 @@
     function sortTable(event) {
         let selectedColumn = event.currentTarget.cellIndex;
         let table, rows, i, switching, currentRow, nextRow, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("workoutTable");
+        table = document.getElementById("workout-table");
         switching = true;
         dir = "asc";
 
