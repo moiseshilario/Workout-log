@@ -1,5 +1,5 @@
-(() => {
-    let sum = 0;
+(() => { 
+    let totalHours = 0;
 
     const addActivity = (event) => {
         const [time, date, activity] = document.getElementsByClassName("data");
@@ -8,7 +8,8 @@
             event.preventDefault();
             const workout = new Workout(time.value, date.value, activity.value);
             addWorkoutInTable(workout);
-            sumHours(parseInt(workout.time));
+            totalHours = sumHours(totalHours, parseInt(workout.time));
+            updateTotalTime();
         }
     };
 
@@ -50,18 +51,12 @@
 
     const deleteWorkout = (event) => {
         document.getElementById("workout-table").deleteRow(event.target.closest("tr").rowIndex);
-        subtractHours(event.target.timeToDelete);
+        totalHours = subtractHours(totalHours, event.target.timeToDelete);
+        updateTotalTime();
     };
 
-    const sumHours = (hours) => {
-        sum += hours;
-        document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
-        return sum;
-    };
-
-    const subtractHours = (hours) => {
-        sum -= hours;
-        document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
+    const updateTotalTime = () => {
+        document.getElementById("sum").innerHTML = `${totalHours} hours of exercise`;
     };
 
     const sortTable = (event) => {
@@ -117,5 +112,7 @@
     };
 
     addEventListenersToElements();
-})();
 
+})();
+    
+ 
