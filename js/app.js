@@ -1,26 +1,18 @@
 (() => {
-    const addBtn = document.getElementById("add-btn");
-    const tableHeaders = document.getElementsByClassName("table-headers");
     let sum = 0;
-    
-    for (let th of tableHeaders) {
-        th.addEventListener("click",toggleArrows);
-        th.addEventListener("click", sortTable);
-    }
-    addBtn.addEventListener("click", addActivity);
-    
-    function addActivity(event) {
+
+    const addActivity = (event) => {
         const [time, date, activity] = document.getElementsByClassName("data");
-        
+
         if (time.checkValidity() && date.checkValidity()) {
             event.preventDefault();
             const workout = new Workout(time.value, date.value, activity.value);
             addWorkoutInTable(workout);
             sumHours(parseInt(workout.time));
         }
-    }
+    };
 
-    function toggleArrows(event) {
+    const toggleArrows = (event) => {
         let selectedTh = event.currentTarget.cellIndex;
         for (var th = 0; th < 3; th++) {
             if (th != selectedTh) {
@@ -35,9 +27,9 @@
             document.getElementsByClassName("arrow-up")[selectedTh].style.visibility = '';
             document.getElementsByClassName("arrow-down")[selectedTh].style.visibility = 'hidden';
         }
-    }
+    };
 
-    function addWorkoutInTable(workout) {
+    const addWorkoutInTable = (workout) => {
         const row = document.getElementById("workout-table").insertRow(1);
         const cell = [];
         const btnDelete = document.createElement("button");
@@ -54,24 +46,25 @@
         cell[1].innerHTML = workout.activity;
         cell[2].innerHTML = workout.date;
         cell[3].appendChild(btnDelete);
-    }
+    };
 
-    function deleteWorkout(event) {
+    const deleteWorkout = (event) => {
         document.getElementById("workout-table").deleteRow(event.target.closest("tr").rowIndex);
         subtractHours(event.target.timeToDelete);
-    }
+    };
 
-    function sumHours(hours) {
+    const sumHours = (hours) => {
         sum += hours;
         document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
-    }
+        return sum;
+    };
 
-    function subtractHours(hours) {
+    const subtractHours = (hours) => {
         sum -= hours;
         document.getElementById("sum").innerHTML = `${sum} hours of exercise`;
-    }
+    };
 
-    function sortTable(event) {
+    const sortTable = (event) => {
         let selectedColumn = event.currentTarget.cellIndex;
         let table, rows, i, switching, currentRow, nextRow, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("workout-table");
@@ -83,7 +76,7 @@
             switching = false;
             rows = table.getElementsByTagName("TR");
 
-            for (i = 1, length = rows.length  ; i < (length - 1); i++) {
+            for (i = 1, length = rows.length; i < (length - 1); i++) {
                 shouldSwitch = false;
 
                 currentRow = rows[i].getElementsByTagName("TD")[selectedColumn];
@@ -112,6 +105,17 @@
                 }
             }
         }
-    }
+    };
 
+    const addEventListenersToElements = () => {
+        const tableHeaders = document.getElementsByClassName("table-headers");
+        for (let th of tableHeaders) {
+            th.addEventListener("click", toggleArrows);
+            th.addEventListener("click", sortTable);
+        }
+        document.getElementById("add-btn").addEventListener("click", addActivity);
+    };
+
+    addEventListenersToElements();
 })();
+
