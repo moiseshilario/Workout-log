@@ -6,4 +6,4 @@ const subtractHours = (totalHours, hours) => {
     return totalHours -= hours;
 };
 
-module.exports = { sumHours: sumHours, subtractHours: subtractHours };
+module.exports = { sumHours, subtractHours };
