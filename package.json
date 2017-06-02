@@ -1,5 +1,19 @@
 {
+  "name": "workout-log",
+  "version": "1.0.0",
+  "description": "A simple workout log using pure javascript, html and css",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moiseshilario/Workout-log.git"
+  },
+  "author": "Moises Hilario Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moiseshilario/Workout-log/issues"
+  },
+  "homepage": "https://github.com/moiseshilario/Workout-log#readme"  
 }
