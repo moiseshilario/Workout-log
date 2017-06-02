@@ -1,5 +1,5 @@
 class Workout {
-    constructor(time, activity, date) {
+    constructor({time, activity, date}) {
         const formatDate = date.replace(/\-/g, '/');
         const dateOptions = {
            day: "2-digit",
