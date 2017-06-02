@@ -1,12 +1,18 @@
-(() => { 
+(() => {
     let totalHours = 0;
 
     const addActivity = (event) => {
-        const [time, date, activity] = document.getElementsByClassName("data");
+        const [time, activity, date] = document.getElementsByClassName("data");
 
         if (time.checkValidity() && date.checkValidity()) {
             event.preventDefault();
-            const workout = new Workout(time.value, date.value, activity.value);
+            const workoutDetais = {
+                time: time.value,
+                activity: activity.value,
+                date: date.value
+            };
+            const workout = new Workout(workoutDetais);
+
             addWorkoutInTable(workout);
             totalHours = sumHours(totalHours, parseInt(workout.time));
             updateTotalTime();
@@ -14,19 +20,22 @@
     };
 
     const toggleArrows = (event) => {
-        let selectedTh = event.currentTarget.cellIndex;
+        const selectedTh = event.currentTarget.cellIndex;
+        const arrowUp = document.getElementsByClassName("arrow-up");
+        const arrowDown = document.getElementsByClassName("arrow-down");
+
         for (var th = 0; th < 3; th++) {
             if (th != selectedTh) {
-                document.getElementsByClassName("arrow-up")[th].style.visibility = '';
-                document.getElementsByClassName("arrow-down")[th].style.visibility = '';
+                arrowUp[th].style.visibility = '';
+                arrowDown[th].style.visibility = '';
             }
         }
-        if (document.getElementsByClassName("arrow-up")[selectedTh].style.visibility != 'hidden') {
-            document.getElementsByClassName("arrow-up")[selectedTh].style.visibility = 'hidden';
-            document.getElementsByClassName("arrow-down")[selectedTh].style.visibility = '';
+        if (arrowUp.style.visibility != 'hidden') {
+            arrowUp[selectedTh].style.visibility = 'hidden';
+            arrowDown[selectedTh].style.visibility = '';
         } else {
-            document.getElementsByClassName("arrow-up")[selectedTh].style.visibility = '';
-            document.getElementsByClassName("arrow-down")[selectedTh].style.visibility = 'hidden';
+            arrowUp[selectedTh].style.visibility = '';
+            arrowDown[selectedTh].style.visibility = 'hidden';
         }
     };
 
@@ -114,5 +123,5 @@
     addEventListenersToElements();
 
 })();
-    
- 
+
+
